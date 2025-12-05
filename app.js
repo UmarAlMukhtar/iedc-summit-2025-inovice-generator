@@ -37,7 +37,7 @@ function newRow(item = { name: "", desc: "", qty: 1, price: 0 }) {
     <td><input class="item-price" type="number" min="0" step="0.01" value="${
       item.price
     }"></td>
-    <td class="item-amount">0.00</td>
+    <td class="item-amount">₹0.00</td>
     <td><button class="remove">✕</button></td>
   `;
   itemsBody.appendChild(tr);
@@ -46,7 +46,7 @@ function newRow(item = { name: "", desc: "", qty: 1, price: 0 }) {
     const qty = Number(tr.querySelector(".item-qty").value) || 0;
     const price = Number(tr.querySelector(".item-price").value) || 0;
     const amt = qty * price;
-    tr.querySelector(".item-amount").textContent = amt.toFixed(2);
+    tr.querySelector(".item-amount").textContent = "₹" + amt.toFixed(2);
     calcTotals();
   }
 
@@ -77,9 +77,9 @@ function calcTotals() {
   const taxRate = Number(taxRateEl.value) || 0;
   const tax = subtotal * (taxRate / 100);
   const total = subtotal + tax;
-  subtotalEl.textContent = subtotal.toFixed(2);
-  taxAmountEl.textContent = tax.toFixed(2);
-  totalAmountEl.textContent = total.toFixed(2);
+  subtotalEl.textContent = "₹" + subtotal.toFixed(2);
+  taxAmountEl.textContent = "₹" + tax.toFixed(2);
+  totalAmountEl.textContent = "₹" + total.toFixed(2);
 }
 
 addItemBtn.addEventListener("click", () => newRow());
@@ -140,7 +140,13 @@ function renderPreview() {
     <div class="bill-to">
       <div class="label">Bill To:</div>
       <div class="value">${escapeHtml(to).replace(/\n/g, "<br>")}</div>
-      ${gstNumber ? `<div class="gst-info"><strong>GST Number:</strong> ${escapeHtml(gstNumber)}</div>` : ''}
+      ${
+        gstNumber
+          ? `<div class="gst-info"><strong>GST Number:</strong> ${escapeHtml(
+              gstNumber
+            )}</div>`
+          : ""
+      }
     </div>
   </div>`;
 
@@ -163,7 +169,9 @@ function renderPreview() {
     const amount = (qty * price).toFixed(2);
     html += `<tr><td><strong>${escapeHtml(name)}</strong></td><td>${escapeHtml(
       desc
-    )}</td><td>${qty}</td><td>${price.toFixed(2)}</td><td>${amount}</td></tr>`;
+    )}</td><td>${qty}</td><td>₹${price.toFixed(
+      2
+    )}</td><td>₹${amount}</td></tr>`;
   });
   html += `</tbody></table>`;
 
