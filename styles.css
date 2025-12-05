@@ -265,7 +265,7 @@ button.remove {
 .invoice-footer {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 .totals-box {
   width: 300px;
@@ -285,15 +285,82 @@ button.remove {
   color: #000;
 }
 
+/* Account Details */
+.account-details {
+  margin: 30px 0;
+  padding: 20px;
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+}
+
+.account-title {
+  font-size: 1em;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+.account-row {
+  font-size: 0.9em;
+  color: #444;
+  margin: 6px 0;
+  line-height: 1.6;
+}
+
+.account-row strong {
+  color: #222;
+  font-weight: 600;
+  display: inline-block;
+  min-width: 100px;
+}
+
 /* Signature and Seal Section */
 .signature-section {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-end;
-  gap: 200px;
-  margin-top: 80px;
+  gap: 40px;
+  margin-top: 50px;
   padding-top: 40px;
   padding-left: 0;
+}
+
+.qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  text-align: center;
+}
+
+.qr-title {
+  font-size: 0.9em;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2px;
+}
+
+.qr-subtitle {
+  font-size: 1em;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.qr-img {
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
+  margin: 0;
+}
+
+.qr-upi {
+  font-size: 1em;
+  color: #444;
+  margin-top: 2px;
+  font-weight: 500;
 }
 
 .signature-box {
@@ -301,6 +368,13 @@ button.remove {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.for-text {
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 10px;
 }
 
 .signature-img {
@@ -314,6 +388,13 @@ button.remove {
   border-bottom: 1px solid #333;
   margin: 0;
   display: none;
+}
+
+.authorized-text {
+  font-size: 0.85em;
+  color: #666;
+  margin-top: 10px;
+  font-weight: 700;
 }
 
 .signature-label {
@@ -354,6 +435,7 @@ button.remove {
 @media print {
   @page {
     margin: 0;
+    size: A4;
   }
   body {
     margin: 0;
@@ -361,7 +443,7 @@ button.remove {
   }
   main.container {
     max-width: none;
-    margin: 50px;
+    margin: 0;
     padding: 0;
   }
   .controls,
@@ -377,7 +459,101 @@ button.remove {
   .preview {
     border: 0;
     box-shadow: none;
-    padding: 0;
+    padding: 30px 40px;
     margin: 0;
+    min-height: auto;
+  }
+  
+  .invoice-head {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+  }
+  
+  .summit-logo {
+    height: 90px;
+  }
+  
+  .logo-row img {
+    height: 32px;
+  }
+  
+  .meta div:first-child {
+    font-size: 2em;
+    margin-bottom: 2px;
+  }
+  
+  .bill-info {
+    margin-bottom: 30px;
+  }
+  
+  .items-preview {
+    margin-bottom: 25px;
+  }
+  
+  .items-preview th {
+    padding: 8px 6px;
+  }
+  
+  .items-preview td {
+    padding: 10px 6px;
+  }
+  
+  .invoice-footer {
+    margin-bottom: 25px;
+  }
+  
+  .account-details {
+    margin: 20px 0;
+    padding: 15px;
+  }
+  
+  .account-row {
+    margin: 4px 0;
+    font-size: 0.85em;
+  }
+  
+  .signature-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    gap: 30px;
+  }
+  
+  .seal-img {
+    height: 110px;
+    width: 110px;
+  }
+  
+  .qr-img {
+    height: 110px;
+    width: 110px;
+  }
+  
+  .qr-title {
+    font-size: 0.75em;
+    margin-bottom: 2px;
+  }
+  
+  .qr-subtitle {
+    font-size: 0.7em;
+    margin-bottom: 5px;
+  }
+  
+  .qr-upi {
+    font-size: 0.7em;
+    margin-top: 4px;
+  }
+  
+  .signature-img {
+    height: 60px;
+  }
+  
+  .for-text {
+    font-size: 0.85em;
+    margin-bottom: 8px;
+  }
+  
+  .authorized-text {
+    font-size: 0.8em;
+    margin-top: 8px;
   }
 }

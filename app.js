@@ -90,7 +90,7 @@ function renderPreview() {
     qs("#invoiceNumber").value || `IEDC-${Date.now().toString().slice(-6)}`;
   const date =
     qs("#invoiceDate").value || new Date().toISOString().slice(0, 10);
-  const from = qs("#from").value || "IEDC Summit 2025";
+  const from = qs("#from").value || "IEDC, LBS College of Engineering, Povval,Muliyar P. O., Kasaragod-671542, India";
   const to = qs("#to").value || "";
   const gstNumber = qs("#gstNumber").value || "";
 
@@ -192,17 +192,30 @@ function renderPreview() {
     </div>
   </div>`;
 
+  html += `<div class="account-details">
+    <div class="account-row">Online payment to be made in favour of IEDC LBS COLLEGE OF ENGINEERING:</div>
+    <div class="account-row"><strong>Acc No:</strong> 016922010002158</div>
+    <div class="account-row"><strong>UPI ID :</strong> 78707501@ubin</div>
+    <div class="account-row"><strong>IFSC:</strong> UBIN0901695</div>
+    <div class="account-row"><strong>Branch:</strong> BOVIKAN</div>
+    <div class="account-row"><strong>Bank Name:</strong> Union Bank of India</div>
+    <div class="account-row"><strong>Acc Name:</strong> IEDC LBS COLLEGE OF ENGINEERING</div>
+  </div>`;
+
   html += `<div class="signature-section">
     <div class="seal-box">
       <img src="logos/iedc-seal.png" alt="IEDC Seal" class="seal-img" onerror="this.style.display='none'">
     </div>
     <div class="signature-box">
+      <div class="for-text">For IEDC LBS COLLEGE OF ENGINEERING</div>
       <img src="logos/signature.png" alt="Signature" class="signature-img" onerror="this.style.display='none'">
       <div class="signature-line"></div>
-      <div class="designation-info">
-        <div class="designation-name">Dr. Sarith Divakar M</div>
-        <div class="designation-title">Convenor, IEDC Summit 2025</div>
-      </div>
+      <div class="authorized-text">Authorized Signatory</div>
+    </div>
+    <div class="qr-box">
+      <div class="qr-subtitle">Scan & Pay</div>
+      <img src="logos/qr.png" alt="QR Code" class="qr-img" onerror="this.style.display='none'">
+      <div class="qr-upi">UPI ID: 78707501@ubin</div>
     </div>
   </div>`;
 
@@ -227,7 +240,9 @@ printBtn.addEventListener("click", () => {
 
 // init
 qs("#invoiceDate").value = new Date().toISOString().slice(0, 10);
-qs("#invoiceNumber").value = `IEDC-${new Date().getFullYear()}-001`;
+const now = new Date();
+const month = String(now.getMonth() + 1).padStart(2, '0');
+qs("#invoiceNumber").value = `IEDC-${now.getFullYear()}-${month}-001`;
 newRow({
   name: "Registration Fee",
   desc: "IEDC Summit 2025 participation",
